@@ -1,0 +1,26 @@
+**Cyclistic Case (Business Intelligence)**
+
+Introduction:  
+Cyclistic, a bike rental company, provides an efficient means for individuals to travel around the NYC area. As Cyclistic's Customer Growth Team develops the business plan for the upcoming year, understanding customer usage patterns at different station locations has become a top priority. The goal is to leverage these insights to optimize station locations and drive customer growth.
+
+Business Problem:
+
+- What is the customer demand at various locations?
+- How can this data be used to enhance customer growth and expand station locations?
+
+Approach Taken:
+
+1. **Documentation**: Successfully completed three critical Business Intelligence documents: the Project Requirement Document, Shareholder Requirement Document, and Strategy Document. These documents ensure comprehensive project breakdown, strategic planning, and provide a roadmap for the project.
+2. **Data Extraction**: Utilized SQL queries on Google DataFlow to extract necessary data and columns from the tables. This data is essential for creating visualizations that uncover meaningful insights to inform effective business strategies.
+3. **Visualization**: Developed three distinct visualizations using relevant data from the tables to create a fully functional, dynamic dashboard on Tableau.
+
+Links:
+
+1. [Documents](https://drive.google.com/drive/folders/1v-gPs2nSWFAuZNxdxRKngBa-bF9lklRv?usp=sharing)
+2. [Project Link](https://public.tableau.com/app/profile/janarthan.anuraag/viz/CyclisticCase_17005958302090/Story1)
+
+Analysis and High-Level Insights:
+
+1. **Customer Composition and Seasonality**: The second chart reveals that subscribers constitute a significantly larger portion of Cyclistic’s users compared to regular customers. Additionally, there is a higher user count during warmer months (May–October) than colder months, which aligns with expected seasonal riding behavior.
+2. **Trip Counts by Starting Neighborhood**: This table displays the total number of bike trips initiated in each neighborhood for the years 2019 and 2020, organized by zip code, borough, and neighborhood. A color gradient emphasizes the highest and lowest monthly trip counts, with darker values indicating higher trip numbers. Light text on darker values ensures readability. The data suggests that the most active stations are located in the Lower East Side and Chelsea and Clinton neighbourhoods, particularly from May to October.
+3. **Trip Duration Insights**: Two horizontal stacked bar charts ordered by total trip minutes (for both customers and subscribers combined) provide insights into which locations users are most willing to travel long distances. The Lower East Side and Chelsea and Clinton neighbourhoods show the highest total trip minutes for both start and end stations.
