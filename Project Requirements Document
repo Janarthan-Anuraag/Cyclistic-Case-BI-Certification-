@@ -1,0 +1,58 @@
+Project Requirements Document: Cyclistic
+
+## **BI Analyst:** Janarthan Anuraag
+
+## **Client/Sponsor:** Cyclistic
+
+## **Purpose:** Cyclistic’s Customer Growth Team is creating a business plan for next year. They want to understand how their customers are using their bikes; their top priority is identifying customer demand at different station locations. The insights could then help grow the customer base by potentially alleviating the number of stations
+
+## **Key dependencies:**
+
+**Stakeholders:**
+
+- Sara Romero, VP, Marketing
+- Ernest Cox, VP,  Product Development
+- Jamal Harris, Director, Customer Data
+- Nina Locklear, Director, Procurement
+
+**Team members:**
+
+- Adhira Patel, API Strategist
+- Megan Pirato, Data Warehousing Specialist
+- Rick Andersson, Manager, Data Governance
+- Tessa Blackwell, Data Analyst
+- Brianne Sand, Director, IT
+- Shareefah Hakimi, Project Manager
+
+## **Stakeholder requirements:**
+
+- R: 1) Dashboard must be accessible, with large print and text-to-speech alternatives.
+    1. The data must not include any personal info (name, email, phone, address).
+    2. Gather insights about the number of trips across all starting and ending locations.
+    3. Gather insights about peak usage by time of day, season, and the impact of weather.
+    4. A visualization showing the percent growth in the number of trips year over year.
+- D: Dashboard must be created in 6 weeks!
+- N: Should show either a table or a map to visualize starting & ending locations, aggregated by location.
+
+## Dashboard will be fully functional for the team to view insights into customer demand at various locations
+
+**Success Criteria:** BI insights must demonstrate how customers are currently using bikes and what impacts demand at station locations. **Measurable:** Each trip should be evaluated using starting and ending location, duration, variables such as time of day, season, and weather. For example, do customers use Cyclistic less when it rains? Or does bikeshare demand stay consistent? Does this vary by location and user types (subscribers vs. non-subscribers)? **Action-oriented:** These outcomes must prove or disprove the theory that location, time, season, and weather impact user demand. Then, the Cyclistic team will use this knowledge to refine future product development. **Relevant:** All metrics must support the primary question: How can we build a better Cyclistic experience? **Time-bound:** Analyze data that spans at least one year to see how seasonality affects usage. Exploring data that spans multiple months will capture peaks and valleys in usage.
+
+**User journeys:** The main purpose of Cyclistic is to provide customers with a better bike-share experience. A deeper dive into trip trends will help decision-makers explore how customers are currently using Cyclistic bikes and how that experience can be improved.
+
+## **Assumptions:** The weather data provided does not include what time precipitation occurred; it’s possible that on some days, it precipitated during off-peak hours. However, for the purpose of this dashboard, assume any amount of precipitation that occurred on the day of the trip could have an impact
+
+The dataset includes latitude and longitude of stations but does not identify more geographic aggregation details like zip code, neighborhood name, or borough. The team will provide a separate database with this data.
+
+## **Compliance and privacy:** The data must not include any personal info (name, email, phone, address). Personal info is not necessary for this project. Anonymize users to avoid bias
+
+## **Accessibility:** Dashboard must be accessible. Must have large print and text-to-speech alternatives
+
+**Roll-out plan:** Tool must be created in 6 weeks!
+
+**Roll-out:**
+
+- Week 1: Dataset assigned. Initial design for fields and BikeIDs validated to fit the requirements.
+- Weeks 2–3: SQL and ETL development
+- Weeks 3–4: Finalize SQL. Dashboard design. 1st draft review with peers.
+- Weeks 5–6: Dashboard development and testing
