@@ -1,0 +1,66 @@
+SELECT
+    TRI.usertype,
+    ZIPSTART.zip_code AS zip_code_start,
+    ZIPSTARTNAME.borough AS borough_start,
+    ZIPSTARTNAME.neighborhood AS neighborhood_start,
+    ZIPEND.zip_code AS zip_code_end,
+    ZIPENDNAME.borough AS borough_end,
+    ZIPENDNAME.neighborhood AS neighborhood_end,
+    DATE_ADD(DATE(TRI.starttime), INTERVAL 5 YEAR) AS start_day,
+    DATE_ADD(DATE(TRI.stoptime), INTERVAL 5 YEAR) AS stop_day,
+    WEA.temp AS day_mean_temperature,
+    WEA.wdsp AS day_mean_wind_speed,
+    WEA.prcp AS day_total_precipitation,
+    ROUND(CAST(TRI.tripduration / 60 AS INT64), -1) AS trip_minutes,
+    COUNT(TRI.bikeid) AS trip_count
+
+/*TRI.usertype: Retrieves the user type (e.g., subscriber or customer).
+ZIPSTART.zip_code AS zip_code_start: Gets the starting zip code.
+ZIPSTARTNAME.borough AS borough_start: Gets the borough of the start station.
+DATE_ADD(DATE(TRI.starttime), INTERVAL 5 YEAR) AS start_day: Adds 5 years to the trip start date.*/
+
+INNER JOIN
+    `bigquery-public-data.geo_us_boundaries.zip_codes` ZIPSTART
+    ON ST_WITHIN(
+        ST_GEOGPOINT(TRI.start_station_longitude, TRI.start_station_latitude),
+        ZIPSTART.zip_code_geom)
+
+/*INNER JOIN links the citibike_trips table (TRI) with the zip code table (ZIPSTART) using spatial functions to assign a zip code to each trip’s start location.
+ST_WITHIN: This spatial function checks if a geographic point (start station) is within a specified polygon (zip code area).
+ST_GEOGPOINT(TRI.start_station_longitude, TRI.start_station_latitude): Converts the longitude and latitude of the trip’s start station into a geographic point.*/
+
+
+INNER JOIN
+    `bigquery-public-data.noaa_gsod.gsod20*` AS WEA
+    ON PARSE_DATE("%Y%m%d", CONCAT(WEA.year, WEA.mo, WEA.da)) = DATE(TRI.starttime)
+
+/*Joins the weather data (WEA) with the trip data (TRI) by matching the trip start date with the weather data’s date.
+PARSE_DATE: Converts the concatenated year, month, and day from weather data into a date format.
+DATE(TRI.starttime): Extracts the date part from the trip's start datetime for comparison.*/
+
+WHERE
+    WEA.wban = '94728' -- NEW YORK CENTRAL PARK
+    AND EXTRACT(YEAR FROM DATE(TRI.starttime)) BETWEEN 2014 AND 2015
+
+/*WEA.wban = '94728': Filters weather data to only include records from the New York Central Park station.
+EXTRACT(YEAR FROM DATE(TRI.starttime)) BETWEEN 2014 AND 2015: Filters trips that occurred in the years 2014 and 2015.*/
+
+DATE_ADD(DATE(TRI.starttime), INTERVAL 5 YEAR) AS start_day
+
+/*DATE(TRI.starttime): Extracts just the date (without time) from the trip’s start datetime.
+DATE_ADD(..., INTERVAL 5 YEAR): Adds 5 years to the start date, adjusting for the fact that weather data is from earlier years (2014-2015).*/
+
+ROUND(CAST(TRI.tripduration / 60 AS INT64), -1) AS trip_minutes
+
+/*CAST(TRI.tripduration / 60 AS INT64): Converts the trip duration (in seconds) to minutes by dividing by 60, then casts it to an integer.
+ROUND(..., -1): Rounds the result to the nearest 10 minutes (e.g., 27 minutes becomes 30).*/
+
+COUNT(TRI.bikeid) AS trip_count
+
+/*COUNT(TRI.bikeid): Counts the number of bike trips in each group (by user type, location, and weather conditions).*/
+
+GROUP BY
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
+
+/*This groups the results by all the selected fields (the 1, 2, 3, ... refers to the positions of the columns in the SELECT list).*/
+
