@@ -1,0 +1,24 @@
+**Stakeholder Requirements Document: Cyclistic**
+
+## **BI Professional:** Janarthan Anuraag
+
+## **Client/Sponsor:** Jamal Harris, Director, Customer Data
+
+## **Business problem:** How is the customer demand at different locations? How can we use this data to improve customer growth and new station growth?
+
+**Stakeholders:**
+
+- Sara Romero, VP, Marketing
+- Ernest Cox, VP,  Product Development
+- Jamal Harris, Director, Customer Data
+- Nina Locklear, Director, Procurement
+
+## **Stakeholder usage details:** Insights will help understand patterns in customer demand at various locations that will help in making decisions that would potentially lead to customer growth. . **Ask follow-up questions for more context**
+
+**Primary requirements:**
+
+- A table or map visualization exploring starting and ending station locations, aggregated by location.
+- A visualization showing which destination (ending) locations are popular based on the total trip minutes.
+- A visualization that focuses on trends from the summer of 2015.
+- A visualization showing the percent growth in the number of trips year over year.
+- Approximation of whether there are more bikes coming in or out of a station.
